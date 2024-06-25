@@ -1,0 +1,78 @@
+
+
+@font-face {
+  font-family: 'vazir';
+  src: url('../fonts/Vazir-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Times';
+  src: url('../fonts/times.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'dast';
+  src: url('../fonts/dast.OTF') format('truetype');
+}
+@font-face {
+  font-family: 'ava';
+  src: url('../fonts/ava.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'nastaliq';
+  src: url('../fonts/nastaliq.ttf') format('truetype');
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=vazir]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=vazir]::before {
+  content: 'vazir';
+  font-family: 'vazir';
+}
+
+.ql-font-vazir {
+  font-family: 'vazir';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Times"]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Times"]::before {
+  content: 'Times';
+  font-family: 'Times';
+}
+
+.ql-font-Times {
+  font-family: 'Times';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=dast]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=dast]::before {
+  content: 'dast';
+  font-family: 'dast';
+}
+
+.ql-font-dast {
+  font-family: 'dast';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=ava]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=ava]::before {
+  content: 'ava';
+  font-family: 'ava';
+}
+
+.ql-font-ava {
+  font-family: 'ava';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=nastaliq]::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=nastaliq]::before {
+  content: 'nastaliq';
+  font-family: 'nastaliq';
+}
+
+.ql-font-ava {
+  font-family: 'nastaliq';
+}
+
+.content-container {
+  height: 150px;
+  }
