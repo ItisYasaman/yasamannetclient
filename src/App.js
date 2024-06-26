@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import PostDetail from "./components/PostDetail";
 import "./App.css";
 
+
 function App() {
   return (
     <Router>
