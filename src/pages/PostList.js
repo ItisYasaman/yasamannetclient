@@ -19,6 +19,8 @@ const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [postToDelete, setPostToDelete] = useState(null);
 
   const handleClose = () => setSelectedPost(null);
   const handleShow = (post) => setSelectedPost(post);
@@ -38,8 +40,7 @@ const PostList = () => {
     fetchPosts();
   }, []);
 
-  const handleDelete = async (id, e) => {
-    e.stopPropagation();
+  const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
       await axios.delete(
@@ -51,9 +52,21 @@ const PostList = () => {
         }
       );
       setPosts(posts.filter((post) => post._id !== id));
+      handleCloseConfirm();
     } catch (err) {
       console.error("Error deleting post:", err);
     }
+  };
+
+  const handleShowConfirm = (post, e) => {
+    e.stopPropagation();
+    setPostToDelete(post);
+    setShowConfirm(true);
+  };
+
+  const handleCloseConfirm = () => {
+    setPostToDelete(null);
+    setShowConfirm(false);
   };
 
   const isAuth = !!localStorage.getItem("token");
@@ -84,7 +97,7 @@ const PostList = () => {
 
   return (
     <div className="container">
-      <h2 className="text-center my-4 welcome-title">Welcome to my Blog</h2>
+      <h2 className="text-center my-4 welcome-title">به وبلاگ من خوش آمدید</h2>
       <div className="input-group mb-3">
         <input
           type="text"
@@ -105,7 +118,7 @@ const PostList = () => {
       <div className="row">
         <div className="col-md-4 col-lg-3 mb-4">
           <div className="list-group">
-            <caption className="post-list_header">Posts</caption>
+            <caption className="post-list_header">پستها</caption>
             {posts.filter(searchFilter).map((post) => (
               <button
                 key={post._id}
@@ -156,13 +169,13 @@ const PostList = () => {
                           to={`/edit/${post._id}`}
                           className="btn btn-primary"
                         >
-                          Edit
+                          ویرایش
                         </Link>
                         <button
-                          onClick={(e) => handleDelete(post._id, e)}
+                          onClick={(e) => handleShowConfirm(post, e)}
                           className="btn btn-danger"
                         >
-                          Delete
+                          حذف پست
                         </button>
                       </div>
                     )}
@@ -204,13 +217,34 @@ const PostList = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              بستن
             </Button>
             <Button
               variant="primary"
               onClick={() => handleShare(selectedPost._id)}
             >
-              Share
+              اشتراک
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
+      {showConfirm && (
+        <Modal show={true} onHide={handleCloseConfirm}>
+          <Modal.Header closeButton>
+            <Modal.Title>تأیید حذف پست</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseConfirm}>
+              لغو
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => handleDelete(postToDelete._id)}
+            >
+              حذف
             </Button>
           </Modal.Footer>
         </Modal>

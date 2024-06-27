@@ -131,7 +131,7 @@ const PostForm = () => {
             className="mb-3 bg-white content-container"
           />
         </div>
-        <button type="submit" className="btn btn-primary mt-3 mb-5">
+        <button type="submit" className="btn btn-primary mt-5 mb-5">
           {id ? "Update Post" : "Create Post"}
         </button>
       </form>
