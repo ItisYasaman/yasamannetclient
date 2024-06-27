@@ -24,7 +24,7 @@ const Navigation = () => {
         <Nav>
           {isAuth && (
             <Nav.Link as={NavLink} to="/new">
-              Create Post
+              پست جدید
             </Nav.Link>
           )}
           <Nav.Link as={NavLink} to="/myblog">
