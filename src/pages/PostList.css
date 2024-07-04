@@ -197,3 +197,28 @@
   margin: 50px;
   line-height: 1.5;
 }
+
+
+
+.modal-dialog.custom-modal-size {
+  max-width: 100%;
+  margin: auto;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .modal-dialog.custom-modal-size {
+    width: 90%; 
+    max-width: 90%;
+    font-size: 1rem;
+  }
+
+  .modal-body {
+    padding: .1rem;
+    margin: 1px;
+    line-height: 1.5rem;
+  }
+}
