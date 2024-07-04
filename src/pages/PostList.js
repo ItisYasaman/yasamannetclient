@@ -118,7 +118,7 @@ const PostList = () => {
       <div className="row">
         <div className="col-md-4 col-lg-3 mb-4">
           <div className="list-group">
-            <caption className="post-list_header">پستها</caption>
+            <caption className="post-list_header">مطالب</caption>
             {posts.filter(searchFilter).map((post) => (
               <button
                 key={post._id}
@@ -135,16 +135,15 @@ const PostList = () => {
             {posts.filter(searchFilter).map((post) => (
               <div
                 key={post._id}
-                className="col-md-6 col-lg-4 mb-4"
+                className="col-md-6 col-lg-3 mb-4"
                 onClick={() => handleShow(post)}
               >
                 <div className="card h-100 shadow-sm post-card">
-                  <img
+                  {/* <img
                     src={post.imageUrl}
                     alt={post.title}
                     className="card-img-top"
-                  />
-
+                  /> */}
                   <div
                     className="card-body"
                     style={{
@@ -175,7 +174,7 @@ const PostList = () => {
                           onClick={(e) => handleShowConfirm(post, e)}
                           className="btn btn-danger"
                         >
-                          حذف پست
+                          حـــــذفX
                         </button>
                       </div>
                     )}
@@ -206,11 +205,13 @@ const PostList = () => {
               direction: isPersian(selectedPost.content) ? "rtl" : "ltr",
             }}
           >
-            <img
-              src={selectedPost.imageUrl}
-              alt={selectedPost.title}
-              className="modal-img"
-            />
+            {selectedPost.imageUrl && (
+              <img
+                src={selectedPost.imageUrl}
+                alt={selectedPost.title}
+                className="modal-img"
+              />
+            )}
             <div
               dangerouslySetInnerHTML={{ __html: selectedPost.content }}
             ></div>
@@ -228,6 +229,7 @@ const PostList = () => {
           </Modal.Footer>
         </Modal>
       )}
+
       {showConfirm && (
         <Modal show={true} onHide={handleCloseConfirm}>
           <Modal.Header closeButton>

@@ -35,12 +35,12 @@ const Navigation = () => {
            <Nav.Link as={NavLink} to="/store" onClick={handleStoreAlert}>
             فروشگاه
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/myblog">
+          {/* <Nav.Link as={NavLink} to="/myblog">
             خانه
-          </Nav.Link>
+          </Nav.Link> */}
           {!isAuth ? (
             <Nav.Link as={NavLink} to="https://yasaman.net">
-              ‌بازگشت‌به‌سایت‌اصلی {" "}
+              سایت اصلی {" "}
             </Nav.Link>
           ) : (
             <Nav.Link onClick={handleLogout}>خروج</Nav.Link>

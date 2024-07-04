@@ -23,6 +23,7 @@ function App() {
             <Route path="/edit/:id" element={<PostForm />} />
           </Route>
         </Routes>
+        <div className="footer_blank"></div>
       </div>
     </Router>
   );

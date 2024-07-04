@@ -11,6 +11,16 @@
   border-radius: 0 4px 4px 0;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
 .post-card {
   cursor: pointer;
   transition: transform 0.2s;
@@ -52,9 +62,12 @@
   }
 }
 
-.post-list_header{
+.post-list_header {
   color: #888;
   text-shadow: #ffffff 1px 1px 1px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .post-card:hover {
   animation: shake 0.5s;
@@ -68,6 +81,9 @@
 
 .card-title {
   font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .card-subtitle {
@@ -98,14 +114,18 @@
 }
 
 .modal-img {
-  width: 100%;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
   object-fit: cover;
   margin-bottom: 1rem;
 }
 
 .btn-primary,
 .btn-danger {
-  width: 48%;
+  margin: 5px;
+  min-width: 80px;
+  font-size: 0.5rem;
 }
 
 .date-text {
@@ -133,15 +153,14 @@
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
     5px 5px 9px rgba(94, 104, 121, 0.563) !important;
 }
-
 .list-group {
   background: #dde1e7 !important;
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
-    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
+    5px 5px 9px rgba(94, 104, 121, 0.563), inset 0 0 0 2px #ccc !important;
   border-radius: 20px !important;
   margin: 20px !important;
   text-align: center;
-  padding:10px !important;
+  padding: 10px !important;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   align-items: center !important;
@@ -150,11 +169,31 @@
 .list-group-item {
   max-width: fit-content !important;
   font-size: 0.8rem !important;
+  font-weight: bold !important;
   font-family: "Courier New", Courier, monospace, sans-serif !important;
   color: #666 !important;
   border-radius: 20px !important;
   background: #dde1e7 !important;
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
-  5px 5px 9px rgba(94, 104, 121, 0.563) !important;
+    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
   margin: 5px !important;
+  min-width: 90%;
+}
+
+.custom-modal-size {
+  width: 80%;
+  max-width: 80%;
+}
+
+.modal-dialog.custom-modal-size {
+  max-width: 80%;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+.modal-body {
+  margin: 50px;
+  line-height: 1.5;
 }
