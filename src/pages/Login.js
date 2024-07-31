@@ -1,4 +1,4 @@
-//CLIENT/src/pages/Login.js
+//src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,3 @@
-//client/src/pages/PostForm.js
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -30,6 +29,7 @@ const PostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [tags, setTags] = useState([]);
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -49,6 +49,8 @@ const PostForm = () => {
           );
           setTitle(response.data.title);
           setContent(response.data.content);
+          setImageUrl(response.data.imageUrl);
+          setTags(response.data.tags || []);
         } catch (err) {
           console.error("Error fetching post data:", err);
           setError("Error fetching post data");
@@ -67,6 +69,7 @@ const PostForm = () => {
       title,
       content,
       imageUrl,
+      tags,
     };
 
     try {
@@ -86,6 +89,8 @@ const PostForm = () => {
       console.log("Post successful:", response.data);
       setTitle("");
       setContent("");
+      setImageUrl("");
+      setTags([]);
       alert("Post created/updated successfully");
       navigate("/");
     } catch (err) {
@@ -93,6 +98,11 @@ const PostForm = () => {
       setError("Request failed");
     }
   };
+
+  const handleTagsChange = (e) => {
+    setTags(e.target.value.split(",").map(tag => tag.trim()));
+  };
+
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">{id ? "Edit Post" : "Create Post"}</h2>
@@ -119,6 +129,17 @@ const PostForm = () => {
             placeholder="Enter image URL"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="tags">Tags</label>
+          <input
+            type="text"
+            id="tags"
+            className="form-control"
+            placeholder="Enter tags, separated by commas"
+            value={tags.join(", ")}
+            onChange={handleTagsChange}
           />
         </div>
         <div className="form-group">

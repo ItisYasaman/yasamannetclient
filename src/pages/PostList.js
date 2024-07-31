@@ -21,6 +21,7 @@ const PostList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
+  const [selectedTag, setSelectedTag] = useState("");
 
   const handleClose = () => setSelectedPost(null);
   const handleShow = (post) => setSelectedPost(post);
@@ -31,7 +32,11 @@ const PostList = () => {
         const response = await axios.get(
           "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts"
         );
-        setPosts(response.data);
+        const fetchedPosts = response.data.map(post => ({
+          ...post,
+          tags: post.tags || []
+        }));
+        setPosts(fetchedPosts);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -75,7 +80,8 @@ const PostList = () => {
     const term = searchTerm.trim().toLowerCase();
     return (
       post.title.toLowerCase().includes(term) ||
-      post.content.toLowerCase().includes(term)
+      post.content.toLowerCase().includes(term) ||
+      post.tags.some(tag => tag.toLowerCase().includes(term))
     );
   };
 
@@ -94,6 +100,14 @@ const PostList = () => {
       });
     }
   };
+
+  const handleTagClick = (tag) => {
+    setSelectedTag(tag);
+  };
+
+  const filteredPosts = selectedTag 
+    ? posts.filter(post => post.tags.includes(selectedTag))
+    : posts.filter(searchFilter);
 
   return (
     <div className="container">
@@ -132,18 +146,13 @@ const PostList = () => {
         </div>
         <div className="col-md-8 col-lg-9">
           <div className="row">
-            {posts.filter(searchFilter).map((post) => (
+            {filteredPosts.map((post) => (
               <div
                 key={post._id}
                 className="col-md-6 col-lg-3 mb-4"
                 onClick={() => handleShow(post)}
               >
                 <div className="card h-100 shadow-sm post-card">
-                  {/* <img
-                    src={post.imageUrl}
-                    alt={post.title}
-                    className="card-img-top"
-                  /> */}
                   <div
                     className="card-body"
                     style={{
@@ -161,6 +170,18 @@ const PostList = () => {
                       <p className="card-subtitle mb-2 text-muted date-text">
                         {format(new Date(post.createdAt), "PPpp")}
                       </p>
+                      <div className="tags">
+                        {post.tags.map((tag, index) => (
+                          <span
+                            key={index}
+                            className="badge badge-primary"
+                            onClick={() => handleTagClick(tag)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                     {isAuth && (
                       <div className="d-flex justify-content-between mt-2">
@@ -215,6 +236,13 @@ const PostList = () => {
             <div
               dangerouslySetInnerHTML={{ __html: selectedPost.content }}
             ></div>
+            <div className="tags">
+              {selectedPost.tags.map((tag, index) => (
+                <span key={index} className="badge badge-primary">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

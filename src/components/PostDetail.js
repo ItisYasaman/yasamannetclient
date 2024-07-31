@@ -49,6 +49,11 @@ const PostDetail = () => {
             <div className="author-info text-muted">
               <p>Written by {post.author} on {new Date(post.createdAt).toLocaleDateString()}</p>
             </div>
+            <div className="post-tags mt-3">
+              {post.tags && post.tags.map((tag, index) => (
+                <span key={index} className="badge badge-secondary mr-2">{tag}</span>
+              ))}
+            </div>
           </article>
         </Col>
       </Row>
