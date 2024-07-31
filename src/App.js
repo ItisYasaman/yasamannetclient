@@ -7,25 +7,30 @@ import PrivateRoute from "./pages/PrivateRoute";
 import Navbar from "./components/Navbar";
 import PostDetail from "./components/PostDetail";
 import "./App.css";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/posts/:id" element={<PostDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/myblog" element={<PostList />} />
-          <Route path="/" element={<PrivateRoute />}>
-            <Route path="/" element={<PostList />} />
-            <Route path="/new" element={<PostForm />} />
-            <Route path="/edit/:id" element={<PostForm />} />
-          </Route>
-        </Routes>
-        <div className="footer_blank"></div>
-      </div>
-    </Router>
+    <>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/myblog" element={<PostList />} />
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/" element={<PostList />} />
+              <Route path="/new" element={<PostForm />} />
+              <Route path="/edit/:id" element={<PostForm />} />
+            </Route>
+          </Routes>
+        </div>
+      </Router>
+      <Footer />
+    </>
   );
 }
 

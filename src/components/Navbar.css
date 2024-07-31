@@ -1,0 +1,42 @@
+.navbar {
+  display: flex;
+  color: #666 !important;
+  border-radius: 20px;
+  background: #dde1e7 !important;
+  box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
+    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
+    min-width: 85%;
+    margin: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #343a40 !important;
+}
+
+.nav-link {
+  color: #343a40 !important;
+}
+
+.nav-link:hover {
+  color: #007bff !important;
+}
+
+
+@media (max-width: 993px) {
+  .navbar {
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 20px;
+    border-radius: 0;
+    margin-top: 0;
+  }
+  
+}

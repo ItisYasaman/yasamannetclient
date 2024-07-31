@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+}
+
+.social-icons {
+  }
+
+.social-icons a {
+  margin: 0 10px;
+  color: #23b4be;
+  font-size: 1rem;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
