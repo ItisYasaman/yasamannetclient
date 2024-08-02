@@ -1,7 +1,17 @@
-.container {
+.container_postform {
   margin-top: 20px;
 }
 
+.content-container{
+  min-height: 300px;
+}
+
+.ql-container {
+background-color: #fff;
+display: block;
+min-height: 150px;
+margin-bottom: 100px;
+}
 .welcome-title {
   color: #333;
   font-weight: bold;

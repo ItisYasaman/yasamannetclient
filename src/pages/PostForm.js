@@ -170,6 +170,7 @@ const PostForm = () => {
             className="form-control"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            required
           />
         </div>
         <div className="form-group">
@@ -181,10 +182,10 @@ const PostForm = () => {
             modules={{ toolbar: toolbarOptions }}
             className="mb-3 bg-white content-container"
           />
-        </div>
-        <button type="submit" className="btn btn-primary mt-5 mb-5">
-          {id ? "Update Post" : "Create Post"}
+        <button type="submit" className="btn btn-primary btn_submit">
+          {id ? "Update Post" : "Submit"}
         </button>
+        </div>
       </form>
     </div>
   );

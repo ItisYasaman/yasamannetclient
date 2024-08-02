@@ -23,22 +23,24 @@ const TagList = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h2 className="text-center my-4">بلاگ</h2>
-      <div className="row">
-        {tags.map((tag) => (
-          <div key={tag} className="col-md-4 col-lg-3 mb-4">
-            <Link to={`/tags/${tag}`} className="tag-card">
-              <div className="card h-100 shadow-sm">
-                <div className="card-body">
-                  <h5 className="card-title text-center">{tag}</h5>
+    <>
+      <h2 className="blog_title">بلاگ</h2>
+      <div className="tag_container">
+        <div className="tag_list_container">
+          {tags.map((tag) => (
+            <div key={tag} className="">
+              <Link to={`/tags/${tag}`} className="tag-card">
+                <div className="card card_ h-100 shadow-sm">
+                  <div className="card-body">
+                    <h5 className="card-title text-center">{tag}</h5>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </div>
-        ))}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

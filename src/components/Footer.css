@@ -1,18 +1,21 @@
-.footer {
-  position: relative;
-  width: 100%;
+/* src/components/Footer.css */
+.footer_ {
+  position: fixed;
   bottom: 0;
+  width: 100%;
+  background-color: transparent;
   text-align: center;
-  background: #dde1e7;
+  padding: 10px 0;
 }
 
 .social-icons {
-  }
+  margin-bottom: 10px;
+}
 
 .social-icons a {
   margin: 0 10px;
-  color: #23b4be;
-  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
 }
 
 .social-icons a:hover {
