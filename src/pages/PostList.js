@@ -1,9 +1,10 @@
+// src/pages/PostList.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import "./PostList.css";
 
 function isPersian(str) {
@@ -21,7 +22,7 @@ const PostList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
-  const [selectedTag, setSelectedTag] = useState("");
+  const { tag } = useParams();
 
   const handleClose = () => setSelectedPost(null);
   const handleShow = (post) => setSelectedPost(post);
@@ -32,11 +33,7 @@ const PostList = () => {
         const response = await axios.get(
           "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts"
         );
-        const fetchedPosts = response.data.map(post => ({
-          ...post,
-          tags: post.tags || []
-        }));
-        setPosts(fetchedPosts);
+        setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -47,6 +44,12 @@ const PostList = () => {
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
+    if (!token) {
+      console.error("No authentication token found");
+      alert("You are not authenticated. Please log in.");
+      return;
+    }
+
     try {
       await axios.delete(
         `https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts/${id}`,
@@ -60,6 +63,11 @@ const PostList = () => {
       handleCloseConfirm();
     } catch (err) {
       console.error("Error deleting post:", err);
+      if (err.response && err.response.status === 401) {
+        alert("Unauthorized: Please log in again.");
+      } else {
+        alert("An error occurred while deleting the post.");
+      }
     }
   };
 
@@ -80,10 +88,11 @@ const PostList = () => {
     const term = searchTerm.trim().toLowerCase();
     return (
       post.title.toLowerCase().includes(term) ||
-      post.content.toLowerCase().includes(term) ||
-      post.tags.some(tag => tag.toLowerCase().includes(term))
+      post.content.toLowerCase().includes(term)
     );
   };
+
+  const filteredPosts = posts.filter((post) => !tag || post.tags.includes(tag));
 
   const handleShare = (postId) => {
     const url = `${window.location.origin}/posts/${postId}`;
@@ -101,17 +110,11 @@ const PostList = () => {
     }
   };
 
-  const handleTagClick = (tag) => {
-    setSelectedTag(tag);
-  };
-
-  const filteredPosts = selectedTag 
-    ? posts.filter(post => post.tags.includes(selectedTag))
-    : posts.filter(searchFilter);
-
   return (
     <div className="container">
-      <h2 className="text-center my-4 welcome-title">به وبلاگ من خوش آمدید</h2>
+      <h2 className="text-center my-4 welcome-title">
+        {tag ? `"${tag}"` : "به وبلاگ من خوش آمدید"}
+      </h2>
       <div className="input-group mb-3">
         <input
           type="text"
@@ -133,7 +136,7 @@ const PostList = () => {
         <div className="col-md-4 col-lg-3 mb-4">
           <div className="list-group">
             <caption className="post-list_header">مطالب</caption>
-            {posts.filter(searchFilter).map((post) => (
+            {filteredPosts.filter(searchFilter).map((post) => (
               <button
                 key={post._id}
                 onClick={() => handleShow(post)}
@@ -146,13 +149,18 @@ const PostList = () => {
         </div>
         <div className="col-md-8 col-lg-9">
           <div className="row">
-            {filteredPosts.map((post) => (
+            {filteredPosts.filter(searchFilter).map((post) => (
               <div
                 key={post._id}
                 className="col-md-6 col-lg-3 mb-4"
                 onClick={() => handleShow(post)}
               >
                 <div className="card h-100 shadow-sm post-card">
+                  {/* <img
+                    src={post.imageUrl}
+                    alt={post.title}
+                    className="card-img-top"
+                  /> */}
                   <div
                     className="card-body"
                     style={{
@@ -167,21 +175,7 @@ const PostList = () => {
                           __html: truncate(post.content, 20) + "...",
                         }}
                       ></p>
-                      <p className="card-subtitle mb-2 text-muted date-text">
-                        {format(new Date(post.createdAt), "PPpp")}
-                      </p>
-                      <div className="tags">
-                        {post.tags.map((tag, index) => (
-                          <span
-                            key={index}
-                            className="badge badge-primary"
-                            onClick={() => handleTagClick(tag)}
-                            style={{ cursor: "pointer" }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      <p className="_date">{format(parseISO(post.date), 'yyyy MM dd')}</p>
                     </div>
                     {isAuth && (
                       <div className="d-flex justify-content-between mt-2">
@@ -236,13 +230,6 @@ const PostList = () => {
             <div
               dangerouslySetInnerHTML={{ __html: selectedPost.content }}
             ></div>
-            <div className="tags">
-              {selectedPost.tags.map((tag, index) => (
-                <span key={index} className="badge badge-primary">
-                  {tag}
-                </span>
-              ))}
-            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -257,28 +244,25 @@ const PostList = () => {
           </Modal.Footer>
         </Modal>
       )}
-
-      {showConfirm && (
-        <Modal show={true} onHide={handleCloseConfirm}>
-          <Modal.Header closeButton>
-            <Modal.Title>تأیید حذف پست</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseConfirm}>
-              لغو
-            </Button>
-            <Button
-              variant="danger"
-              onClick={() => handleDelete(postToDelete._id)}
-            >
-              حذف
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
+      <Modal show={showConfirm} onHide={handleCloseConfirm}>
+        <Modal.Header closeButton>
+          <Modal.Title>تأیید حذف</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          آیا مطمئن هستید که می‌خواهید این پست را حذف کنید؟
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseConfirm}>
+            انصراف
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => handleDelete(postToDelete._id)}
+          >
+            حـــــذف
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+
+//src/components/PostDetail.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -47,7 +49,7 @@ const PostDetail = () => {
             <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
             <hr className="my-5" />
             <div className="author-info text-muted">
-              <p>Written by {post.author} on {new Date(post.createdAt).toLocaleDateString()}</p>
+              <p>{new Date(post.createdAt).toLocaleDateString()}</p>
             </div>
             <div className="post-tags mt-3">
               {post.tags && post.tags.map((tag, index) => (

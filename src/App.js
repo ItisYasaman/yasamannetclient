@@ -1,5 +1,3 @@
-//src/App.js
-
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PostList from "./pages/PostList";
@@ -8,9 +6,10 @@ import Login from "./pages/Login";
 import PrivateRoute from "./pages/PrivateRoute";
 import Navbar from "./components/Navbar";
 import PostDetail from "./components/PostDetail";
-import "./App.css";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import TagList from "./pages/TagList";
+import "./App.css";
 
 function App() {
   return (
@@ -22,12 +21,12 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/posts/:id" element={<PostDetail />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/myblog" element={<PostList />} />
+            <Route path="/" element={<TagList />} />
             <Route path="/" element={<PrivateRoute />}>
-              <Route path="/" element={<PostList />} />
               <Route path="/new" element={<PostForm />} />
               <Route path="/edit/:id" element={<PostForm />} />
             </Route>
+            <Route path="/tags/:tag" element={<PostList />} />
           </Routes>
         </div>
       </Router>

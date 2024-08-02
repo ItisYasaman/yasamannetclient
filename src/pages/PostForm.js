@@ -1,3 +1,4 @@
+//src/pages/PostForm.js
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -25,11 +26,22 @@ const toolbarOptions = [
   ["clean"],
 ];
 
+const tagOptions = [
+  "Personal",
+  "Poem",
+  "Story",
+  "شعر",
+  "دلنوشته",
+  "داستان",
+];
+
 const PostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [selectedTag, setSelectedTag] = useState(tagOptions[0]);
   const [tags, setTags] = useState([]);
+  const [date, setDate] = useState("");
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -51,6 +63,8 @@ const PostForm = () => {
           setContent(response.data.content);
           setImageUrl(response.data.imageUrl);
           setTags(response.data.tags || []);
+          setSelectedTag(response.data.tags[0] || tagOptions[0]);
+          setDate(response.data.date ? response.data.date.split("T")[0] : "");
         } catch (err) {
           console.error("Error fetching post data:", err);
           setError("Error fetching post data");
@@ -69,7 +83,8 @@ const PostForm = () => {
       title,
       content,
       imageUrl,
-      tags,
+      tags: [selectedTag],
+      date
     };
 
     try {
@@ -91,6 +106,7 @@ const PostForm = () => {
       setContent("");
       setImageUrl("");
       setTags([]);
+      setDate("");
       alert("Post created/updated successfully");
       navigate("/");
     } catch (err) {
@@ -99,8 +115,8 @@ const PostForm = () => {
     }
   };
 
-  const handleTagsChange = (e) => {
-    setTags(e.target.value.split(",").map(tag => tag.trim()));
+  const handleTagChange = (e) => {
+    setSelectedTag(e.target.value);
   };
 
   return (
@@ -132,14 +148,28 @@ const PostForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="tags">Tags</label>
-          <input
-            type="text"
-            id="tags"
+          <label htmlFor="tag">Tag</label>
+          <select
+            id="tag"
             className="form-control"
-            placeholder="Enter tags, separated by commas"
-            value={tags.join(", ")}
-            onChange={handleTagsChange}
+            value={selectedTag}
+            onChange={handleTagChange}
+          >
+            {tagOptions.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="date">Date</label>
+          <input
+            type="date"
+            id="date"
+            className="form-control"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
           />
         </div>
         <div className="form-group">
