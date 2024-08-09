@@ -1,19 +1,43 @@
 .container {
   position: relative;
-  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.image-lyers{
-position: absolute;
-}
-
-.author-container{
-  position: block;
+.second_container {
+  position: relative;
   width: 100%;
+  justify-content: center;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  border-radius: 50%;
-  margin-right: 150px;
-  margin-bottom: 50px;
+  width: 100%;
+  border-radius: 10px;
+  text-align: right;
+}
+
+.about-container h2 {
+  position: relative;
+  font-size: 20px;
+  bottom: 20px;
+  right: 0;
+}
+
+.image-lyers {
+  position: relative;
+}
+
+.author-container {
+  position: absolute;
+  scale: 1;
+  left: -200px;
+  top: 2rem;
 }
 
 .author-picture {
@@ -32,7 +56,10 @@ position: absolute;
   z-index: 0;
 }
 .about_auther {
-  direction: rtl;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
 }
 @keyframes pulse {
   0% {
@@ -44,19 +71,6 @@ position: absolute;
   100% {
     transform: scale(0.95);
   }
-}
-
-.author-picture:hover {
-  animation-play-state: paused;
-}
-
-.second_container {
-  position: relative;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding-top: 1.2rem;
 }
 
 .books-menu {
@@ -131,9 +145,7 @@ position: absolute;
 }
 
 .pre-type {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  min-height: 165px;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 993px) {
@@ -191,7 +203,6 @@ position: absolute;
   animation: shine 2s linear infinite alternate;
 }
 
-
 .drop_2 {
   position: absolute;
   left: 85px;
@@ -206,7 +217,7 @@ position: absolute;
   animation: wobble 1s linear infinite alternate;
   z-index: 1;
   opacity: 0.3;
-  scale: .25;
+  scale: 0.25;
 }
 
 .drop_2::before {
@@ -236,11 +247,6 @@ position: absolute;
   animation: shine 2s linear infinite alternate;
 }
 
-
-
-
-
-
 @keyframes wobble {
   0% {
     border-radius: 51% 49% 48% 52% / 62% 44% 56% 38%;
@@ -265,5 +271,98 @@ position: absolute;
   100% {
     left: 74px;
     top: 38px;
+  }
+}
+
+.read_it-btn {
+  background-color: #23b4be;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 40px;
+  transition: all 0.1s ease-in-out;
+}
+
+.read_it-btn:hover {
+  background-color: #23b4be;
+  color: white;
+  animation: shake 0.2s ease-in-out;
+}
+
+/* Text Styles */
+.pre-type {
+  max-width: 90%;
+  font-family: "Vazir", sans-serif;
+  line-height: 1.8;
+  color: #343a40;
+}
+
+.h6_title {
+  position: relative;
+  padding: 10px;
+  font-family: "Vazir", sans-serif;
+  font-weight: 700;
+  color: #495057;
+}
+.h6_title i {
+  position: relative;
+  font-size: 1.5rem;
+  top: -10px;
+}
+.h6_title:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+.card-title_last {
+  position: relative;
+  font-family: "Vazir", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #343a40;
+  margin-bottom: 15px;
+  min-width: max-content;
+  overflow: hidden;
+}
+
+.container_books-menu h6 {
+  position: relative;
+  font-family: "Vazir", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #343a40;
+  top: 20px;
+  min-width: max-content;
+  overflow: hidden;
+}
+
+@media (max-width: 1300px) {
+  .about_auther {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    
+  }
+  .about_auther h2 {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #343a40;
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .author-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
   }
 }

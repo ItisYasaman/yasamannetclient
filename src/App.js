@@ -28,12 +28,6 @@ function App() {
             </Route>
             <Route path="/tags/:tag" element={<PostList />} />
           </Routes>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
           <Footer />
         </div>
       </Router>

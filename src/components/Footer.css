@@ -1,23 +1,65 @@
 /* src/components/Footer.css */
 .footer_ {
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  display: flex;
+  left: -250px;
+  bottom:300px;
   background-color: transparent;
-  text-align: center;
-  padding: 10px 0;
+  text-align: left;
+  padding: 0px 10px;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-90deg);
+  z-index: 1;
 }
 
 .social-icons {
-  margin-bottom: 10px;
+  display: flex;
+  margin-bottom: 0;
 }
 
 .social-icons a {
-  margin: 0 10px;
-  color: #333;
+  position: relative;
+  top: -7px;
+  right: 15px;
+  padding: 5px;
+  color: #000000;
   text-decoration: none;
+  font-size: 12px;
+  rotate: 90deg;
 }
 
 .social-icons a:hover {
-  color: #007bff;
+  color: aqua;
+}
+
+.footer_ p {
+  font-size: 0.8rem;
+  position: relative;
+  width: 450px;
+}
+.clock {
+  margin-left: 15px;
+  font-family: "roboto";
+}
+
+@media screen and (max-width: 1000px) {
+  .footer_ {
+    position: relative;
+    left: -50px;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    padding-bottom: 10px;
+    rotate: 90deg;
+  }
+
+  .social-icons a {
+    position: relative;
+    rotate: 0deg;
+    top: -30px;
+    right: -52%;
+  }
+  
 }
