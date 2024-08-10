@@ -1,6 +1,5 @@
-PostDetail.css
 .post-content {
-  line-height: 1.8; /* Adjust line height for better readability */
+  line-height: 1.8;
 }
 
 .det-container{
@@ -11,16 +10,17 @@ PostDetail.css
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-  font-family: 'Lato', sans-serif;
+  font-family: 'vazir';
   font-size: 1rem;
   font-weight: 300;
   color: #333;
   line-height: 1.5;
   text-align: justify;
-  background-image: url('https://images.unsplash.com/photo-1607236083122-583e96ea5aac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-image: url('https://img.freepik.com/free-vector/abstract-white-bokeh-glowing-lights-background_1017-24049.jpg?w=996&t=st=1723243330~exp=1723243930~hmac=9d11cb89ba6cdb11491e2bf72fc553f94325fd9478e9b1a11965f3d3678f74f9');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  direction: rtl;
 }
 
 .det-titel{

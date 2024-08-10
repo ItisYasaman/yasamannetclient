@@ -5,15 +5,15 @@
   background: #dde1e7 !important;
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
     5px 5px 9px rgba(94, 104, 121, 0.563) !important;
-    min-width: 85%;
-    margin: auto;
-    padding-left: 100px;
-    padding-right: 100px;
-    margin-top: 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
+  min-width: 85%;
+  margin: auto;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
 
 .navbar-brand {
   font-size: 1.3rem;
@@ -29,6 +29,48 @@
   color: #007bff !important;
 }
 
+.search-container {
+  position: relative;
+}
+
+.search-results {
+  max-height: 100vh;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+}
+
+.search-results .list-group-item {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  max-width: 100px;
+  max-height: 30px;
+  overflow: hidden;
+}
+
+.search-results .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.list-group-item a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #343a40;
+  font-size: .8rem;
+  font-family: "Vazir", sans-serif;
+  overflow: hidden;
+}
+
+.search-icon{
+  position: absolute;
+  top: 50%;
+  right: 115px;
+  transform: translateY(-60%);
+  font-size: 1.2rem;
+  color: #343a40;
+  cursor: pointer;
+}
 
 @media (max-width: 993px) {
   .navbar {
@@ -38,5 +80,7 @@
     border-radius: 0;
     margin-top: 0;
   }
-  
+  .search-icon{
+    display: none;
+  }
 }
