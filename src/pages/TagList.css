@@ -1,41 +1,154 @@
-/* src/pages/TagList.css */
-.blog_title {
-  position: relative;
+.tag-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 100%;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin: 1rem;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 20px;
+  list-style: none;
 }
-
-.text-center {
-  text-decoration: none;
-}
-.tag_list_container {
+.menu {
+  width: 25rem;
+  min-width: 25rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  flex-flow: column nowrap;
+  position: relative;
+  transform: rotate(-7deg);
+  background-image: url("https://img.freepik.com/free-photo/white-paper-texture-background_23-2151025747.jpg?t=st=1723259078~exp=1723262678~hmac=5e830779aff9d3fc62c94cd592d8885204448698bd9ab7f73b22c1ebec6c7f08&w=1060") !important; /* https://www.freepik.com */
+  padding: 2.5rem;
+  box-shadow: 5px 5px 15px #0000006e;
+  scale: .8;
+}
+.blog_title {
+  position: relative;
+  z-index: 999;
+}
+.menu ol {
+  counter-reset: menu;
+  list-style: none;
 }
 
-.tag-card {
+.menu-item a {
+  display: flex;
+  justify-content: flex-start;
+  color: currentColor;
+  text-decoration: none;
+  padding: 0.3rem 0;
+  order: 0;
+  font-family: "vazir";
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-indent: 2ch;
+  color: #464646;
+}
+
+.menu-item a::before {
+  content: "";
+  display: block;
+  border-bottom: 1px dotted black;
+  position: relative;
+  top: -3px;
+  flex: 1 1 auto;
+  margin: 0 1rem;
+  order: 1;
+}
+
+.menu-item a::after {
+  counter-increment: menu;
+  content: counters(menu, ".");
+  flex: 0 0 auto;
+  order: 2;
+  transform: rotate(7deg) scale(1.2);
+  text-decoration: underline;
+}
+
+.sub-menu {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.sub-menu > li > a {
+  text-indent: 0ch;
+  padding: 0.5rem 0 0.5rem 2ch;
+  margin: 0;
+}
+
+.menu::before {
+  content: "°";
+  align-self: center;
+  transform: rotate(7deg);
+  margin-bottom: 2rem;
+}
+
+.menu::after {
+  content: "°";
+  align-self: center;
+  transform: rotate(7deg);
+  margin-top: 1rem;
+}
+
+.menu {
+  transition: transform 0.3s;
+}
+.menu:hover {
+  transform: rotate(0);
+  
+}
+
+.menu::before {
+  transition: transform 0.5s;
+}
+.menu:hover::before {
+  transform: rotate(0);
+  content: "°";
+}
+.menu::after {
+  transition: transform 0.5s;
+}
+.menu:hover::after {
+  transform: rotate(0);
+  content: "°";
+}
+
+.menu .menu-item a::after {
+  transition: transform 0.3s;
+}
+.menu:hover .menu-item a::after {
+  transform: rotate(0);
+}
+
+.menu:hover > ol > .menu-item {
+  opacity: 0.9;
+}
+
+.menu-item:hover {
+  transition: background-color 0.3s;
+  background: #7bf6ff6e;
+  opacity: 1 !important;
+  border-radius: 20px;
+}
+
+.menu-item:hover a::after {
   text-decoration: none;
 }
 
-.tag-card:hover {
-  text-decoration: none;
+.menu-item:hover > a::before {
+  transition: flex-grow 0.3s;
+  width: 0;
+  flex-grow: 0;
+  transform-origin: center bottom;
 }
 
-.card_ {
-  background: #dde1e7 !important;
-  border-radius: 20px !important;
-  box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
-    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
-  margin: 0.8rem;
-  min-width: 380px;
+.sub-menu > .menu-item {
+  max-height: 1ch;
+  transform: scaleY(0.1);
+  transform-origin: center top;
+  transition: transform 0.2s, max-height 0.5s;
+}
+
+.menu:hover .sub-menu .menu-item {
+  max-height: 10em;
+  transform: scaleY(1);
 }

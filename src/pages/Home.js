@@ -1,3 +1,4 @@
+// src/pages/Home.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,6 +8,7 @@ import "./Home.css";
 
 const Home = () => {
   const [latestPosts, setLatestPosts] = useState([]);
+  const [manualPosts, setManualPosts] = useState([]); // State for manual posts
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,6 +20,7 @@ const Home = () => {
           (a, b) => new Date(b.date) - new Date(a.date)
         );
         setLatestPosts(sortedPosts.slice(0, 5));
+        setManualPosts(sortedPosts.filter(post => post.addToManual)); // Filter manual posts
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -61,10 +64,7 @@ const Home = () => {
                 <div className="card card_a">
                   <div className="card-body card-body_b">
                     <h5 className="card-title">Post 1</h5>
-                    <p className="card-text">
-                      بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
-                      بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا{" "}
-                    </p>
+                    <p className="card-text"> </p>
                   </div>
                 </div>
               </div>
@@ -75,17 +75,6 @@ const Home = () => {
                     <p className="card-text">
                       بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
                       بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <div className="card card_a">
-                  <div className="card-body card-body_b">
-                    <h5 className="card-title">Post 3</h5>
-                    <p className="card-text">
-                      بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا
-                      بلا بلا بلا بلا بلا بلا بلا بلا بلا بلا{" "}
                     </p>
                   </div>
                 </div>
@@ -116,6 +105,23 @@ const Home = () => {
               <span className="sr-only"></span>
             </a>
           </div>
+
+          {/* High lights Section */}
+          <div className="manual-posts">
+            <ul className="manual-post_ul">
+              <h6>High lights</h6>
+              {manualPosts.length > 0 ? (
+                manualPosts.map((post) => (
+                  <li key={post._id} className="manual-post_li">
+                    <a href={`/posts/${post._id}`}>{post.title}</a>
+                  </li>
+                ))
+              ) : (
+                <li className="manual-post_li">No highlighted posts available</li>
+              )}
+            </ul>
+          </div>
+
           <div className="container_books-menu">
             <h6 className="text-center h6_title h6_title-lastposts">
               آخرین مطالب

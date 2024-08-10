@@ -1,3 +1,4 @@
+//ser/componens/Footer.js
 import React, { useState, useEffect } from "react";
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

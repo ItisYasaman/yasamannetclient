@@ -85,12 +85,15 @@
 }
 
 .carousel-inner {
+  position: relative;
+  top: -29px;
   display: flex;
-  width: 100%;
-  height: 100%;
   align-items: center;
   justify-content: center;
   margin: auto 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .card-body_a {
@@ -343,7 +346,6 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    
   }
   .about_auther h2 {
     width: 100%;
@@ -365,4 +367,45 @@
     left: 0;
     top: 0;
   }
+}
+
+.manual-posts {
+  position: fixed;
+  display: block;
+  width: 200px;
+  height: 350px;
+  right: 100px;
+  top:15rem;
+  border-radius: 20px !important;
+  box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
+    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
+}
+
+.manual-post_ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  direction: rtl;
+}
+.manual-post_ul h6 {
+  position: relative;
+  padding: 30px;
+  width: 200px;
+  left: 0;
+}
+
+.manual-post_li {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  right: 2rem;
+}
+.manual-post_li a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #343a40;
 }

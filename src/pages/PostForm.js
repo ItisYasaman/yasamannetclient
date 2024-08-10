@@ -42,6 +42,7 @@ const PostForm = () => {
   const [selectedTag, setSelectedTag] = useState(tagOptions[0]);
   const [tags, setTags] = useState([]);
   const [date, setDate] = useState("");
+  const [addToManual, setAddToManual] = useState(false); // New state for checkbox
   const [error, setError] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ const PostForm = () => {
           setTags(response.data.tags || []);
           setSelectedTag(response.data.tags[0] || tagOptions[0]);
           setDate(response.data.date ? response.data.date.split("T")[0] : "");
+          setAddToManual(response.data.addToManual || false); // Fetch checkbox value if editing
         } catch (err) {
           console.error("Error fetching post data:", err);
           setError("Error fetching post data");
@@ -84,7 +86,8 @@ const PostForm = () => {
       content,
       imageUrl,
       tags: [selectedTag],
-      date
+      date,
+      addToManual, // Include checkbox value in post data
     };
 
     try {
@@ -107,6 +110,7 @@ const PostForm = () => {
       setImageUrl("");
       setTags([]);
       setDate("");
+      setAddToManual(false);
       alert("Post created/updated successfully");
       navigate("/");
     } catch (err) {
@@ -117,6 +121,10 @@ const PostForm = () => {
 
   const handleTagChange = (e) => {
     setSelectedTag(e.target.value);
+  };
+
+  const handleCheckboxChange = (e) => {
+    setAddToManual(e.target.checked);
   };
 
   return (
@@ -182,10 +190,22 @@ const PostForm = () => {
             modules={{ toolbar: toolbarOptions }}
             className="mb-3 bg-white content-container"
           />
+        </div>
+        <div className="form-group form-check">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="addToManual"
+            checked={addToManual}
+            onChange={handleCheckboxChange}
+          />
+          <label className="form-check-label" htmlFor="addToManual">
+            Add to Highlights on Home Page
+          </label>
+        </div>
         <button type="submit" className="btn btn-primary btn_submit">
           {id ? "Update Post" : "Submit"}
         </button>
-        </div>
       </form>
     </div>
   );
