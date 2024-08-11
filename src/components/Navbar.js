@@ -4,6 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import "./Navbar.css";
+import yasaman from "../img/yasaman.png";
 
 const Navigation = () => {
   const isAuth = !!localStorage.getItem("token");
@@ -44,7 +45,7 @@ const Navigation = () => {
 
   // Highlight search query in text
   const highlightQuery = (text, query) => {
-    const parts = text.split(new RegExp(`(${query})`, 'gi'));
+    const parts = text.split(new RegExp(`(${query})`, "gi"));
     return parts.map((part, index) =>
       part.toLowerCase() === query.toLowerCase() ? (
         <span key={index} className="highlight">
@@ -58,7 +59,8 @@ const Navigation = () => {
 
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
-      <Navbar.Brand as={NavLink} to="/home" className="font-weight-bold">
+      {/* <img src={yasaman} alt="Logo" className="logo" /> */}
+      <Navbar.Brand as={NavLink} to="/home" className="font-weight-bold logo">
         یاسمن چوبه
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -76,7 +78,6 @@ const Navigation = () => {
             </Nav.Link>
           )}
           <div className="search-container mx-2 position-relative">
-
             <input
               type="text"
               placeholder="Search..."
@@ -96,7 +97,7 @@ const Navigation = () => {
               </ul>
             )}
           </div>
-            <i className="fa fa-search search-icon"></i>
+          <i className="fa fa-search search-icon"></i>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

@@ -111,7 +111,7 @@ const PostList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container post-list_container">
       <h2 className="text-center my-4 welcome-title">
         {tag ? `"${tag}"` : "به وبلاگ من خوش آمدید"}
       </h2>
@@ -132,7 +132,7 @@ const PostList = () => {
           </button>
         </div>
       </div>
-      <div className="row">
+      <div className="row post-list_row">
         <div className="col-md-4 col-lg-3 mb-4">
           <div className="list-group">
             <caption className="post-list_header">مطالب</caption>
@@ -152,7 +152,7 @@ const PostList = () => {
             {filteredPosts.filter(searchFilter).map((post) => (
               <div
                 key={post._id}
-                className="col-md-6 col-lg-3 mb-4"
+                className="col-4 col-md-4 col-lg-3 mb-4"
                 onClick={() => handleShow(post)}
               >
                 <div className="card h-100 shadow-sm post-card">
@@ -178,18 +178,18 @@ const PostList = () => {
                       <p className="_date">{format(parseISO(post.date), 'yyyy MM dd')}</p>
                     </div>
                     {isAuth && (
-                      <div className="d-flex justify-content-between mt-2">
+                      <div className="d-flex justify-content-between mt-2 edit-del_btn">
                         <Link
                           to={`/edit/${post._id}`}
                           className="btn btn-primary"
                         >
-                          ویرایش
+                          <i class="fa-solid fa-pen-to-square"></i>
                         </Link>
                         <button
                           onClick={(e) => handleShowConfirm(post, e)}
                           className="btn btn-danger"
                         >
-                          حـــــذفX
+                          <i class="fa-solid fa-trash"></i>
                         </button>
                       </div>
                     )}

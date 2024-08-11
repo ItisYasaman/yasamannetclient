@@ -1,5 +1,3 @@
-
-//src/components/PostDetail.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -45,7 +43,10 @@ const PostDetail = () => {
         <Col lg="8">
           <article>
             <h1 className="display-4 mb-4 det-titel">{post.title}</h1>
-            <Image src={post.imageUrl} alt={post.title} fluid className="mb-4 rounded det-img" />
+            {/* Conditionally render the image */}
+            {post.imageUrl && (
+              <Image src={post.imageUrl} alt={post.title} fluid className="mb-4 rounded det-img" />
+            )}
             <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
             <hr className="my-5" />
             <div className="author-info text-muted">

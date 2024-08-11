@@ -203,9 +203,11 @@ const PostForm = () => {
             Add to Highlights on Home Page
           </label>
         </div>
-        <button type="submit" className="btn btn-primary btn_submit">
+        <button type="submit" className="submit-post_btn">
           {id ? "Update Post" : "Submit"}
         </button>
+        <br/>
+        <br/>
       </form>
     </div>
   );

@@ -1,16 +1,25 @@
+.post-list_container{
+
+}
 .container_postform {
   margin-top: 20px;
 }
 
-.content-container{
+
+.content-container {
   min-height: 300px;
 }
 
 .ql-container {
-background-color: #fff;
-display: block;
-min-height: 150px;
-margin-bottom: 100px;
+  display: block;
+  min-height: 150px;
+  margin-bottom: 100px;
+}
+
+.ql-editor p{
+  font-size: 16px;
+  line-height: 1.5;
+  height: 100px;
 }
 .welcome-title {
   color: #333;
@@ -34,6 +43,10 @@ margin-bottom: 100px;
 .post-card {
   cursor: pointer;
   transition: transform 0.2s;
+  width: 140px;
+  max-height: 180px;
+  min-height: 180px;
+  overflow: hidden;
 }
 
 @keyframes shake {
@@ -80,7 +93,7 @@ margin-bottom: 100px;
   font-weight: bold;
 }
 
-.container_books-menu{
+.container_books-menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,8 +102,8 @@ margin-bottom: 100px;
   margin-bottom: 10px;
 }
 
-.h6_title-lastposts{
-top: 20px;
+.h6_title-lastposts {
+  top: 20px;
 }
 
 .post-card:hover {
@@ -106,8 +119,10 @@ top: 20px;
 .card-title {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
+  overflow: hidden;
+padding: 14px;
 }
 
 .card-subtitle {
@@ -124,7 +139,8 @@ top: 20px;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Limit to 2 lines */
-  line-clamp: 2;  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .card-img-top {
@@ -145,10 +161,18 @@ top: 20px;
   margin-bottom: 1rem;
 }
 
+.edit-del_btn{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 2px;
+}
+
 .btn-primary,
 .btn-danger {
+  font-size: 0.8rem !important;
   margin: 5px;
-  min-width: 80px;
   font-size: 0.5rem;
 }
 
@@ -204,7 +228,6 @@ top: 20px;
   min-width: 90%;
 }
 
-
 .modal-content {
   width: 80%;
 }
@@ -223,22 +246,38 @@ top: 20px;
   width: 100%;
 }
 
+._date {
+  left: 0;
+  display: flex;
+  position: absolute;
+  color: #666;
+  font-size: 0.7rem;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   .modal-dialog.custom-modal-size {
-    width: 90%; 
+    width: 90%;
     max-width: 90%;
     font-size: 1rem;
   }
 
   .modal-body {
-    padding: .1rem;
+    padding: 0.1rem;
     margin: 1px;
     line-height: 1.5rem;
   }
-}
-
-
-._date{
-  color: #666;
-  font-size: 0.7rem;
+  .list-group-item {
+    display: none !important;
+  }
+  .card-title {
+    font-size: 0.7rem;
+    top: 10px;
+    overflow: hidden;
+  }
+  .post-card {
+  }
 }

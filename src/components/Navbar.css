@@ -14,7 +14,18 @@
   font-weight: 600;
   font-size: 1.1rem;
 }
+/* .logo{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+} */
 
+.logo{
+  font-family: "vazir";
+}
 .navbar-brand {
   font-size: 1.3rem;
   font-weight: 700;

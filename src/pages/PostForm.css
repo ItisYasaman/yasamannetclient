@@ -25,10 +25,12 @@
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="vazir"]::before {
   content: "vazir";
   font-family: "vazir";
+
 }
 
 .ql-font-vazir {
   font-family: "vazir";
+  
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Times"]::before,
@@ -39,6 +41,7 @@
 
 .ql-font-Times {
   font-family: "Times";
+  
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="dast"]::before,
@@ -80,10 +83,18 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.btn_submit {
-  top: 20px;
-  display: inline;
-  position: relative;
-  height: 40px;
-  border-radius: 8px;
+.submit-post_btn{
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  padding: .2rem .2rem;
+  border-radius: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.submit-post_btn:hover {
+  background-color: #0069d9;
 }

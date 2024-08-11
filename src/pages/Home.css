@@ -107,7 +107,7 @@
 .card-body_b {
   position: relative;
   width: 300px;
-  height: 100px;
+  height: 120px;
   border-radius: 20px !important;
   margin: 20px !important;
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
@@ -338,6 +338,76 @@
   overflow: hidden;
 }
 
+
+.manual-posts {
+  position: fixed;
+  display: block;
+  width: 200px;
+  height: max-content;
+  right: 100px;
+  top:15rem;
+  border-radius: 20px !important;
+  box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
+  5px 5px 9px rgba(94, 104, 121, 0.563) !important;
+  padding: 10px;
+}
+
+.manual-post_ul {
+  position: relative;
+  width: 100%;
+  direction: rtl;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f8f9fa; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manual-post_ul h6 {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  background-color: #23b4be;
+  color: #fff;
+  margin: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; 
+  text-align: center;
+}
+
+.manual-post_li {
+  position: relative;
+  width: 100%;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manual-post_li:hover {
+  background-color: #e9ecef; 
+}
+
+.manual-post_li a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #007bff;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.manual-post_li a:hover {
+  text-decoration: underline;
+}
+
+
 @media (max-width: 1300px) {
   .about_auther {
     display: flex;
@@ -367,45 +437,14 @@
     left: 0;
     top: 0;
   }
-}
-
-.manual-posts {
-  position: fixed;
-  display: block;
-  width: 200px;
-  height: 350px;
-  right: 100px;
-  top:15rem;
-  border-radius: 20px !important;
-  box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
-    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
-}
-
-.manual-post_ul {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  direction: rtl;
-}
-.manual-post_ul h6 {
-  position: relative;
-  padding: 30px;
-  width: 200px;
-  left: 0;
-}
-
-.manual-post_li {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  right: 2rem;
-}
-.manual-post_li a {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: #343a40;
+  .manual-posts {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    left: 0;
+    top: 0;
+  }
 }
