@@ -43,9 +43,15 @@ const Navigation = () => {
     setSearchQuery(event.target.value);
   };
 
+  // Escape special characters in the search query
+  const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  };
+
   // Highlight search query in text
   const highlightQuery = (text, query) => {
-    const parts = text.split(new RegExp(`(${query})`, "gi"));
+    const escapedQuery = escapeRegExp(query);
+    const parts = text.split(new RegExp(`(${escapedQuery})`, "gi"));
     return parts.map((part, index) =>
       part.toLowerCase() === query.toLowerCase() ? (
         <span key={index} className="highlight">
