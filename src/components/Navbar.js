@@ -1,16 +1,15 @@
-//src/components/Navbar.js
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Navbar.css";
-import yasaman from "../img/yasaman.png";
 
 const Navigation = () => {
-  const isAuth = !!localStorage.getItem("token");
+  const [isAuth, setIsAuth] = useState(!!localStorage.getItem("token"));
   const [allPosts, setAllPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch all posts when component mounts
   useEffect(() => {
@@ -45,7 +44,7 @@ const Navigation = () => {
 
   // Escape special characters in the search query
   const escapeRegExp = (string) => {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   };
 
   // Highlight search query in text
@@ -63,25 +62,34 @@ const Navigation = () => {
     );
   };
 
+  // Handle Logout
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuth(false);
+    navigate("/login");
+  };
+
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
-      {/* <img src={yasaman} alt="Logo" className="logo" /> */}
-      <Navbar.Brand as={NavLink} to="/home" className="font-weight-bold logo">
+      <Navbar.Brand as={NavLink} to="/" className="font-weight-bold logo">
         یاسمن چوبه
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link as={NavLink} to="/" className="mx-2">
-            بلاگ
-          </Nav.Link>
           <Nav.Link as={NavLink} to="/home" className="mx-2">
+            <i className="fa-solid fa-book-open"></i>
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/" className="mx-2">
             <i className="fa-solid fa-house"></i>
           </Nav.Link>
           {isAuth && (
-            <Nav.Link as={NavLink} to="/new" className="mx-2">
-              ایجاد
-            </Nav.Link>
+            <>
+              <Nav.Link as={NavLink} to="/new" className="mx-2">
+              <i class="fa-solid fa-pen-nib"></i>              </Nav.Link>
+              <Nav.Link as="button" onClick={handleLogout} className="mx-2">
+              <i class="fa-solid fa-right-from-bracket"></i>              </Nav.Link>
+            </>
           )}
           <div className="search-container mx-2 position-relative">
             <input

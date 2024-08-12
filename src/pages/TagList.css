@@ -48,7 +48,7 @@
 .menu-item a::before {
   content: "";
   display: block;
-  border-bottom: 1px dotted black;
+  border-bottom: 1px dotted #23b4be;
   position: relative;
   top: -3px;
   flex: 1 1 auto;

@@ -1,10 +1,8 @@
-.post-list_container{
-
+.post-list_container {
 }
 .container_postform {
   margin-top: 20px;
 }
-
 
 .content-container {
   min-height: 300px;
@@ -16,7 +14,7 @@
   margin-bottom: 100px;
 }
 
-.ql-editor p{
+.ql-editor p {
   font-size: 16px;
   line-height: 1.5;
   height: 100px;
@@ -38,6 +36,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
+  background: #dde1e7 !important;
 }
 
 .post-card {
@@ -122,7 +121,7 @@
   font-size: 1rem;
   text-align: center;
   overflow: hidden;
-padding: 14px;
+  padding: 14px;
 }
 
 .card-subtitle {
@@ -161,7 +160,7 @@ padding: 14px;
   margin-bottom: 1rem;
 }
 
-.edit-del_btn{
+.edit-del_btn {
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -212,13 +211,14 @@ padding: 14px;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   align-items: center !important;
+  font-family: "vazir" !important;
 }
 
 .list-group-item {
   max-width: fit-content !important;
-  font-size: 0.8rem !important;
+  font-size: 0.7rem !important;
   font-weight: bold !important;
-  font-family: "Courier New", Courier, monospace, sans-serif !important;
+  font-family: "vazir" !important;
   color: #666 !important;
   border-radius: 20px !important;
   background: #dde1e7 !important;
@@ -226,6 +226,8 @@ padding: 14px;
     5px 5px 9px rgba(94, 104, 121, 0.563) !important;
   margin: 5px !important;
   min-width: 90%;
+  text-align: center;
+  direction: rtl;
 }
 
 .modal-content {
@@ -246,7 +248,7 @@ padding: 14px;
   width: 100%;
 }
 
-._date {
+.date__ {
   left: 0;
   display: flex;
   position: absolute;

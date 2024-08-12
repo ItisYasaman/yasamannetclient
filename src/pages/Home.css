@@ -106,8 +106,9 @@
 
 .card-body_b {
   position: relative;
+  top: 10px;
   width: 300px;
-  height: 120px;
+  min-height: 100px;
   border-radius: 20px !important;
   margin: 20px !important;
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
@@ -143,8 +144,8 @@
   border-radius: 20px !important;
   box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
     5px 5px 9px rgba(94, 104, 121, 0.563) !important;
-  background-color: transparent;
-  z-index: 1;
+    background: #dde1e7;
+    z-index: 1;
 }
 
 .pre-type {
@@ -289,7 +290,6 @@
 .read_it-btn:hover {
   background-color: #23b4be;
   color: white;
-  animation: shake 0.2s ease-in-out;
 }
 
 /* Text Styles */
@@ -298,6 +298,9 @@
   font-family: "Vazir", sans-serif;
   line-height: 1.8;
   color: #343a40;
+  direction: rtl;
+  font-weight: 500;
+  text-align: justify;
 }
 
 .h6_title {
@@ -313,7 +316,6 @@
   top: -10px;
 }
 .h6_title:hover {
-  animation: shake 0.5s ease-in-out;
 }
 
 .card-title_last {
@@ -386,10 +388,14 @@
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .manual-post_li:hover {
   background-color: #e9ecef; 
+
 }
 
 .manual-post_li a {
@@ -401,6 +407,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: none !important;
 }
 
 .manual-post_li a:hover {

@@ -1,3 +1,11 @@
+.post-detail{
+  margin-bottom: 0px;
+  padding: 10px;
+  text-align: justify;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .post-content {
   line-height: 1.8;
 }
@@ -16,7 +24,7 @@
   color: #333;
   line-height: 1.5;
   text-align: justify;
-  background-image: url('https://img.freepik.com/free-vector/abstract-white-bokeh-glowing-lights-background_1017-24049.jpg?w=996&t=st=1723243330~exp=1723243930~hmac=9d11cb89ba6cdb11491e2bf72fc553f94325fd9478e9b1a11965f3d3678f74f9');
+background-color: #dde1e7;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

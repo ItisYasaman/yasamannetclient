@@ -25,7 +25,7 @@ const TagList = () => {
   return (
     <>
     <div className="tag-list">
-      <h2 className="blog_title text-center">بلاگ</h2>
+      <h2 className="blog_title text-center">نمونه کارها</h2>
       <nav className="menu">
         <ol>
           {tags.map((tag) => (

@@ -1,10 +1,10 @@
-// src/pages/PostList.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import { Link, useParams, useNavigate } from "react-router-dom";  // Import useNavigate
 import Button from "react-bootstrap/Button";
 import { format, parseISO } from "date-fns";
+import Modal from "react-bootstrap/Modal";
+
 import "./PostList.css";
 
 function isPersian(str) {
@@ -18,14 +18,11 @@ function truncate(str, no_chars) {
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
   const [postToDelete, setPostToDelete] = useState(null);
   const { tag } = useParams();
-
-  const handleClose = () => setSelectedPost(null);
-  const handleShow = (post) => setSelectedPost(post);
+  const navigate = useNavigate();  // Use useNavigate instead of useHistory
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -94,20 +91,8 @@ const PostList = () => {
 
   const filteredPosts = posts.filter((post) => !tag || post.tags.includes(tag));
 
-  const handleShare = (postId) => {
-    const url = `${window.location.origin}/posts/${postId}`;
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "Check out this post",
-          url: url,
-        })
-        .catch((error) => console.error("Error sharing", error));
-    } else {
-      navigator.clipboard.writeText(url).then(() => {
-        alert("Link copied to clipboard!");
-      });
-    }
+  const handlePostClick = (postId) => {
+    navigate(`/posts/${postId}`);  // Use navigate to change the route
   };
 
   return (
@@ -139,7 +124,7 @@ const PostList = () => {
             {filteredPosts.filter(searchFilter).map((post) => (
               <button
                 key={post._id}
-                onClick={() => handleShow(post)}
+                onClick={() => handlePostClick(post._id)}
                 className="list-group-item list-group-item-action"
               >
                 {truncate(post.title, 20)}
@@ -153,14 +138,9 @@ const PostList = () => {
               <div
                 key={post._id}
                 className="col-4 col-md-4 col-lg-3 mb-4"
-                onClick={() => handleShow(post)}
+                onClick={() => handlePostClick(post._id)}
               >
                 <div className="card h-100 shadow-sm post-card">
-                  {/* <img
-                    src={post.imageUrl}
-                    alt={post.title}
-                    className="card-img-top"
-                  /> */}
                   <div
                     className="card-body"
                     style={{
@@ -172,10 +152,12 @@ const PostList = () => {
                       <p
                         className="truncate"
                         dangerouslySetInnerHTML={{
-                          __html: truncate(post.content, 20) + "...",
+                          __html: truncate(post.content, 20),
                         }}
                       ></p>
-                      <p className="_date">{format(parseISO(post.date), 'yyyy MM dd')}</p>
+                      <p className="date__">
+                        {format(parseISO(post.date), "yyyy MM dd")}
+                      </p>
                     </div>
                     {isAuth && (
                       <div className="d-flex justify-content-between mt-2 edit-del_btn">
@@ -183,13 +165,13 @@ const PostList = () => {
                           to={`/edit/${post._id}`}
                           className="btn btn-primary"
                         >
-                          <i class="fa-solid fa-pen-to-square"></i>
+                          <i className="fa-solid fa-pen-to-square"></i>
                         </Link>
                         <button
                           onClick={(e) => handleShowConfirm(post, e)}
                           className="btn btn-danger"
                         >
-                          <i class="fa-solid fa-trash"></i>
+                          <i className="fa-solid fa-trash"></i>
                         </button>
                       </div>
                     )}
@@ -200,50 +182,6 @@ const PostList = () => {
           </div>
         </div>
       </div>
-      {selectedPost && (
-        <Modal
-          show={true}
-          onHide={handleClose}
-          dialogClassName="custom-modal-size"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title
-              style={{
-                direction: isPersian(selectedPost.title) ? "rtl" : "ltr",
-              }}
-            >
-              {selectedPost.title}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body
-            style={{
-              direction: isPersian(selectedPost.content) ? "rtl" : "ltr",
-            }}
-          >
-            {selectedPost.imageUrl && (
-              <img
-                src={selectedPost.imageUrl}
-                alt={selectedPost.title}
-                className="modal-img"
-              />
-            )}
-            <div
-              dangerouslySetInnerHTML={{ __html: selectedPost.content }}
-            ></div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              بستن
-            </Button>
-            <Button
-              variant="primary"
-              onClick={() => handleShare(selectedPost._id)}
-            >
-              اشتراک
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
       <Modal show={showConfirm} onHide={handleCloseConfirm}>
         <Modal.Header closeButton>
           <Modal.Title>تأیید حذف</Modal.Title>

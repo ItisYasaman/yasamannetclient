@@ -1,5 +1,4 @@
-//src/pages/Login.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +9,14 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // If the user is already logged in, redirect them to the home page
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +30,18 @@ const Login = () => {
       console.log('Login successful:', response.data);
       localStorage.setItem('token', response.data.token);
       navigate('/');
+      window.location.reload();
     } catch (err) {
       console.error('Error during login:', err.response);
       setError(err.response?.data?.message || 'Login failed');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   return (
@@ -66,6 +79,9 @@ const Login = () => {
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
+      <button onClick={handleLogout} className="btn btn-secondary mt-3">
+        Logout
+      </button>
     </div>
   );
 };
