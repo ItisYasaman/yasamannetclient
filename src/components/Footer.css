@@ -3,7 +3,7 @@
   position: fixed;
   display: flex;
   left: -250px;
-  bottom:300px;
+  bottom: 300px;
   background-color: transparent;
   text-align: left;
   padding: 0px 10px;
@@ -30,7 +30,7 @@
 }
 
 .social-icons a:hover {
-  color: aqua;
+  color: #23b4be;
 }
 
 .footer_ p {
@@ -61,5 +61,4 @@
     top: -30px;
     right: -52%;
   }
-  
 }

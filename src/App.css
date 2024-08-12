@@ -8,3 +8,14 @@
   min-height: 97dvh;
 }
 
+.developer-link {
+  font-size: 0.8rem;
+  min-width: 0px;
+  position: absolute;
+  font-size:13px;
+  right: 5px;
+  bottom: 5px;
+  color: #34bdfc;
+  text-decoration: none;
+  z-index: 1;
+}

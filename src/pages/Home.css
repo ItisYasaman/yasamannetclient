@@ -319,13 +319,12 @@
 }
 
 .card-title_last {
-  position: relative;
   font-family: "Vazir", sans-serif;
   font-weight: 700;
   font-size: 1rem;
   color: #343a40;
   margin-bottom: 15px;
-  min-width: max-content;
+  min-width: 150px;
   overflow: hidden;
 }
 

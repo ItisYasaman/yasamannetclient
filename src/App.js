@@ -19,7 +19,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} /> {/* Home page at the root */}
-            <Route path="/home" element={<TagList />} /> {/* Weblog shown at "/home" */}
+            <Route path="/home" element={<TagList />} />{" "}
+            {/* Weblog shown at "/home" */}
             <Route path="/posts/:id" element={<PostDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/tags/:tag" element={<PostList />} />
@@ -29,6 +30,14 @@ function App() {
             </Route>
           </Routes>
           <Footer />
+          <a
+            className="developer-link"
+            href="https://itisyara.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Developed by: Yara
+          </a>
         </div>
       </Router>
     </>

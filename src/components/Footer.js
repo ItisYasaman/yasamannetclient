@@ -7,30 +7,30 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
   return (
-    <footer className="footer_">
-      <div className="social-icons">
-        <a href="mailto:your-email@example.com">
-          <FontAwesomeIcon icon={faEnvelope} size="2x" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FontAwesomeIcon icon={faLinkedin} size="2x" />
-        </a>
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FontAwesomeIcon icon={faInstagram} size="2x" />
-        </a>
-        <p>
-          ©Yasaman Choubeh. All rights reserved 2024
-        </p>
-      </div>
-    </footer>
+    <>
+      <footer className="footer_">
+        <div className="social-icons">
+          <a href="mailto:yasaman.choubeh@gmail.com">
+            <FontAwesomeIcon icon={faEnvelope} size="2x" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/yasaman-choubeh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+          </a>
+          <a
+            href="https://www.instagram.com/yasaman.choubeh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+          </a>
+          <p>©Yasaman Choubeh. All rights reserved 2024</p>
+        </div>
+      </footer>
+    </>
   );
 };
 
