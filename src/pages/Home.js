@@ -63,7 +63,7 @@ const Home = () => {
               <div className="carousel-item active">
                 <div className="card card_a">
                   <div className="card-body card-body_b">
-                    <h5 className="card-title">به زودی</h5>
+                    <h5 className="card-title">!...به زودی</h5>
                     <p className="card-text"> </p>
                   </div>
                 </div>
@@ -98,11 +98,18 @@ const Home = () => {
           {/* High lights Section */}
           <div className="manual-posts">
             <ul className="manual-post_ul">
-              <h6>High lights</h6>
+              <h6>پست‌های ویژه</h6>
               {manualPosts.length > 0 ? (
                 manualPosts.map((post) => (
-                  <li key={post._id} className="manual-post_li">
-                    <a href={`/posts/${post._id}`}>{post.title}</a>
+                  <li
+                    key={post._id}
+                    className="manual-post_li"
+                    onClick={() =>
+                      (window.location.href = `/posts/${post._id}`)
+                    }
+                    style={{ cursor: "pointer" }}
+                  >
+                    {post.title}
                   </li>
                 ))
               ) : (
