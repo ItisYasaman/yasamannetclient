@@ -40,7 +40,6 @@ const PostForm = () => {
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [selectedTag, setSelectedTag] = useState(tagOptions[0]);
-  const [tags, setTags] = useState([]);
   const [date, setDate] = useState("");
   const [addToManual, setAddToManual] = useState(false); // New state for checkbox
   const [error, setError] = useState("");
@@ -63,7 +62,6 @@ const PostForm = () => {
           setTitle(response.data.title);
           setContent(response.data.content);
           setImageUrl(response.data.imageUrl);
-          setTags(response.data.tags || []);
           setSelectedTag(response.data.tags[0] || tagOptions[0]);
           setDate(response.data.date ? response.data.date.split("T")[0] : "");
           setAddToManual(response.data.addToManual || false); // Fetch checkbox value if editing
@@ -108,7 +106,6 @@ const PostForm = () => {
       setTitle("");
       setContent("");
       setImageUrl("");
-      setTags([]);
       setDate("");
       setAddToManual(false);
       alert("Post created/updated successfully");

@@ -16,15 +16,6 @@ const Footer = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const formattedDateTime = currentDateTime.toLocaleString("en-US", {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: false,
-  });
 
   return (
     <footer className="footer_">
@@ -48,7 +39,6 @@ const Footer = () => {
         </a>
         <p>
           ©Yasaman Choubeh. All rights reserved 2024
-          {/* <span className="clock">{formattedDateTime}</span> */}
         </p>
       </div>
     </footer>

@@ -58,7 +58,7 @@ const Home = () => {
             data-ride="carousel"
             data-interval="4000"
           >
-            <h6 className="text-center h6_title"></h6>
+            <h6 className="text-center h6_title"> </h6>
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <div className="card card_a">
