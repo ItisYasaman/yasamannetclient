@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { Container, Row, Col, Image, Alert, Spinner } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Alert,
+  Spinner,
+  Button,
+} from "react-bootstrap";
 import "./PostDetail.css";
 
 const PostDetail = () => {
@@ -25,6 +33,21 @@ const PostDetail = () => {
     fetchPost();
   }, [id]);
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: post.title,
+          text: post.content,
+          url: window.location.href,
+        })
+        .then(() => console.log("Successful share"))
+        .catch((error) => console.log("Error sharing", error));
+    } else {
+      alert("Share feature is not supported in your browser.");
+    }
+  };
+
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
   }
@@ -46,6 +69,9 @@ const PostDetail = () => {
           <Row className="justify-content-center">
             <Col lg="8">
               <article>
+                <Button variant="" className="share-btn" onClick={handleShare}>
+                  <i class="fa-solid fa-share-from-square"></i> share
+                </Button>
                 <h1 className="display-4 mb-4 det-titel">{post.title}</h1>
                 {/* Conditionally render the image */}
                 {post.imageUrl && (
@@ -62,7 +88,9 @@ const PostDetail = () => {
                 />
                 <hr className="my-5" />
                 <div className="author-info text-muted">
-                  <p>{new Date(post.createdAt).toLocaleDateString()}</p>
+                  <p className="date_">
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </p>
                 </div>
                 <div className="post-tags mt-3">
                   {post.tags &&

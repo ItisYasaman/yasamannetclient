@@ -85,7 +85,7 @@ const PostForm = () => {
       imageUrl,
       tags: [selectedTag],
       date,
-      addToManual, // Include checkbox value in post data
+      addToManual,
     };
 
     try {

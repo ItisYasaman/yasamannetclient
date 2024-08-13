@@ -152,8 +152,8 @@ const PostList = () => {
                           __html: truncate(post.content, 20),
                         }}
                       ></p>
-                      <p className="date__">
-                        {format(parseISO(post.date), "yyyy MM dd")}
+                      <p className="date_">
+                        {format(parseISO(post.date), "yyyy.MM.dd")}
                       </p>
                     </div>
                     {isAuth && (

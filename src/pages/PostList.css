@@ -258,18 +258,6 @@
   width: 100%;
 }
 
-.date__ {
-  left: 0;
-  display: flex;
-  position: absolute;
-  color: #666;
-  font-size: 0.7rem;
-  bottom: 25px;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-}
-
 @media (max-width: 768px) {
   .modal-dialog.custom-modal-size {
     width: 90%;
@@ -312,6 +300,9 @@
     font-size: 0.7rem;
     top: 10px;
     overflow: hidden;
+  }
+  .tag-cards_{
+    right:10px
   }
 }
 

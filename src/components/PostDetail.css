@@ -49,3 +49,25 @@ background-color: #dde1e7;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
+
+.share-btn{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: .8rem;
+}
+.share-btn i{
+font-size: 1.5rem;
+}
+
+.share-btn:hover{
+  color: #23b4be;
+}
+
+.date_ {
+  font-family: 'Arial', sans-serif;
+}
