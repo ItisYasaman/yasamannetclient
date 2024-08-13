@@ -86,9 +86,11 @@ const Navigation = () => {
           {isAuth && (
             <>
               <Nav.Link as={NavLink} to="/new" className="mx-2">
-              <i class="fa-solid fa-pen-nib"></i>              </Nav.Link>
+                <i class="fa-solid fa-pen-nib"></i>
+              </Nav.Link>
               <Nav.Link as="button" onClick={handleLogout} className="mx-2">
-              <i class="fa-solid fa-right-from-bracket"></i>              </Nav.Link>
+                <i class="fa-solid fa-right-from-bracket"></i>{" "}
+              </Nav.Link>
             </>
           )}
           <div className="search-container mx-2 position-relative">

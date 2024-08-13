@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Image, Alert, Spinner } from "react-bootstrap";
-import "./PostDetail.css"; // Import custom CSS for additional styling
+import "./PostDetail.css";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -68,7 +68,7 @@ const PostDetail = () => {
                   {post.tags &&
                     post.tags.map((tag, index) => (
                       <Link
-                        to={`/tags/${tag}`}  // Set the link to the relevant tag list page
+                        to={`/tags/${tag}`}
                         key={index}
                         className="badge badge-secondary mr-2"
                       >
