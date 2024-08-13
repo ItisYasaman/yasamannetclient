@@ -1,5 +1,15 @@
 .post-list_container {
 }
+
+.tag-cards_container{
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  right: 25px;
+}
 .container_postform {
   margin-top: 20px;
 }
@@ -280,8 +290,45 @@
     top: 10px;
     overflow: hidden;
   }
-.post-list_row{
-  position: relative;
-  left: -22px;
+
 }
+
+@media (max-width: 768px) {
+  .modal-dialog.custom-modal-size {
+    width: 90%;
+    max-width: 90%;
+    font-size: 1rem;
+  }
+
+  .modal-body {
+    padding: 0.1rem;
+    margin: 1px;
+    line-height: 1.5rem;
+  }
+  .list-group {
+    display: none !important;
+  }
+  .card-title {
+    font-size: 0.7rem;
+    top: 10px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 600px) {
+  .tag-cards_{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.762),
+    5px 5px 9px rgba(94, 104, 121, 0.563) !important;
+  }
 }

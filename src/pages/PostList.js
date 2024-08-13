@@ -95,7 +95,7 @@ const PostList = () => {
   return (
     <div className="container post-list_container">
       <h2 className="text-center my-4 welcome-title">
-        {tag ? `"${tag}"` : "به وبلاگ من خوش آمدید"}
+        {tag ? `"${tag}"` : ""}
       </h2>
       <div className="input-group mb-3">
         <input
@@ -115,7 +115,7 @@ const PostList = () => {
         </div>
       </div>
       <div className="row post-list_row">
-        <div className="col-md-4 col-lg-3 mb-4">
+        <div className="col-md-4 col-lg-3 mb-0 post-list_sidebar">
           <div className="list-group">
             <caption className="post-list_header">مطالب</caption>
             {filteredPosts.filter(searchFilter).map((post) => (
@@ -129,8 +129,8 @@ const PostList = () => {
             ))}
           </div>
         </div>
-        <div className="col-md-8 col-lg-9">
-          <div className="row">
+        <div className="col-md-8 col-lg-9 tag-cards_">
+          <div className="row tag-cards_container">
             {filteredPosts.filter(searchFilter).map((post) => (
               <div
                 key={post._id}
@@ -161,7 +161,7 @@ const PostList = () => {
                         <Link
                           to={`/edit/${post._id}`}
                           className="btn btn-primary"
-                          onClick={(e) => e.stopPropagation()} // Prevents the click event from propagating
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <i className="fa-solid fa-pen-to-square"></i>
                         </Link>
