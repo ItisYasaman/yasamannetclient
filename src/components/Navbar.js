@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,7 @@ const Navigation = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const navigate = useNavigate();
+  const searchContainerRef = useRef(null);
 
   // Fetch all posts when component mounts
   useEffect(() => {
@@ -69,6 +70,23 @@ const Navigation = () => {
     navigate("/login");
   };
 
+  // Close search results when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
+        setSearchQuery("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <Navbar bg="light" expand="lg" className="shadow-sm">
       <Navbar.Brand as={NavLink} to="/" className="font-weight-bold logo">
@@ -86,14 +104,17 @@ const Navigation = () => {
           {isAuth && (
             <>
               <Nav.Link as={NavLink} to="/new" className="mx-2">
-                <i class="fa-solid fa-pen-nib"></i>
+                <i className="fa-solid fa-pen-nib"></i>
               </Nav.Link>
               <Nav.Link as="button" onClick={handleLogout} className="mx-2">
-                <i class="fa-solid fa-right-from-bracket"></i>{" "}
+                <i className="fa-solid fa-right-from-bracket"></i>{" "}
               </Nav.Link>
             </>
           )}
-          <div className="search-container mx-2 position-relative">
+          <div
+            className="search-container mx-2 position-relative"
+            ref={searchContainerRef}
+          >
             <input
               type="text"
               placeholder="Search..."
@@ -102,7 +123,7 @@ const Navigation = () => {
               className="search-input form-control card-search"
             />
             {searchQuery && (
-              <ul className="search-results list-group position-absolute">
+              <ul className="search-results list-group_search position-absolute">
                 {filteredPosts.map((post) => (
                   <li key={post._id} className="list-group-item">
                     <NavLink to={`/posts/${post._id}`}>
