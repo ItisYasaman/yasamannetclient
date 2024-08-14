@@ -38,7 +38,6 @@ const PostDetail = () => {
       navigator
         .share({
           title: post.title,
-          text: post.content,
           url: window.location.href,
         })
         .then(() => console.log("Successful share"))
@@ -47,6 +46,7 @@ const PostDetail = () => {
       alert("Share feature is not supported in your browser.");
     }
   };
+  
 
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
