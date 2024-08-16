@@ -47,6 +47,7 @@ const PostDetail = () => {
     }
   };
   
+  
 
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
