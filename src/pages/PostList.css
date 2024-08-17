@@ -139,8 +139,7 @@
 }
 
 .card-text {
-  color: #666;
-}
+  display:none}
 
 .truncate {
   overflow: hidden;

@@ -16,6 +16,7 @@ const PostDetail = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
+  const [direction, setDirection] = useState("ltr");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -24,6 +25,7 @@ const PostDetail = () => {
           `https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts/${id}`
         );
         setPost(response.data);
+        detectLanguageDirection(response.data.content);
       } catch (error) {
         console.error("Error fetching the post:", error);
         setError("Error fetching the post");
@@ -32,6 +34,15 @@ const PostDetail = () => {
 
     fetchPost();
   }, [id]);
+
+  const detectLanguageDirection = (content) => {
+    const farsiPattern = /[\u0600-\u06FF]/;
+    if (farsiPattern.test(content)) {
+      setDirection("rtl");
+    } else {
+      setDirection("ltr");
+    }
+  };
 
   const handleShare = () => {
     if (navigator.share) {
@@ -46,8 +57,6 @@ const PostDetail = () => {
       alert("Share feature is not supported in your browser.");
     }
   };
-  
-  
 
   if (error) {
     return <Alert variant="danger">{error}</Alert>;
@@ -69,9 +78,9 @@ const PostDetail = () => {
         <Container className="mt-5 mb-5 det-container">
           <Row className="justify-content-center">
             <Col lg="8">
-              <article>
+              <article style={{ direction: direction }}>
                 <Button variant="" className="share-btn" onClick={handleShare}>
-                  <i class="fa-solid fa-share-from-square"></i> share
+                  <i className="fa-solid fa-share-from-square"></i> share
                 </Button>
                 <h1 className="display-4 mb-4 det-titel">{post.title}</h1>
                 {/* Conditionally render the image */}
@@ -90,9 +99,16 @@ const PostDetail = () => {
                 <hr className="my-5" />
                 <div className="author-info text-muted">
                   <p className="date_">
-                    {new Date(post.createdAt).toLocaleDateString()}
+                    {post.date
+                      ? new Date(post.date).toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      : "Date not available"}
                   </p>
                 </div>
+
                 <div className="post-tags mt-3">
                   {post.tags &&
                     post.tags.map((tag, index) => (

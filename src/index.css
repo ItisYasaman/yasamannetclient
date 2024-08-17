@@ -4,9 +4,13 @@ html {
 }
 
 body {
-  font-family: "vazir" sans-serif;
+  
+  font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body[dir="rtl"] {
+  font-family: "vazir";
 }
 
 * {
