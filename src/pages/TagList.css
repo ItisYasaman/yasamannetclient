@@ -83,8 +83,8 @@
   transform: rotate(7deg);
   margin-bottom: 2rem;
   display: block;
-  width: 50px; /* Adjust the width as needed */
-  height: 50px; /* Adjust the height as needed */
+  width: 50px;
+  height: 50px; 
   background-image: url('../img/mat.gif');
   background-size: cover;
   background-repeat: no-repeat;
@@ -111,9 +111,9 @@
   transform: rotate(7deg);
   margin-top: 1rem;
   display: block;
-  width: 50px; /* Adjust the width as needed */
-  height: 50px; /* Adjust the height as needed */
-  background-image: url('../img/pat.gif'); /* Replace with the actual path to your GIF */
+  width: 50px; 
+  height: 50px; 
+  background-image: url('../img/pat.gif'); 
   background-size: cover;
   background-repeat: no-repeat;
 }
