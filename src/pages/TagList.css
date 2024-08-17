@@ -78,17 +78,20 @@
 }
 
 .menu::before {
-  content: "°";
+  content: "";
   align-self: center;
   transform: rotate(7deg);
   margin-bottom: 2rem;
+  display: block;
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  background-image: url('../img/mat.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .menu::after {
-  content: "°";
-  align-self: center;
-  transform: rotate(7deg);
-  margin-top: 1rem;
+  content: "";
 }
 
 .menu {
@@ -104,14 +107,22 @@
 }
 .menu:hover::before {
   transform: rotate(0);
-  content: "°";
+  align-self: center;
+  transform: rotate(7deg);
+  margin-top: 1rem;
+  display: block;
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+  background-image: url('../img/pat.gif'); /* Replace with the actual path to your GIF */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .menu::after {
   transition: transform 0.5s;
 }
 .menu:hover::after {
   transform: rotate(0);
-  content: "°";
+  content: "";
 }
 
 .menu .menu-item a::after {
