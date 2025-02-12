@@ -16,11 +16,11 @@ const TagPosts = () => {
         let response;
         if (tag === "untagged") {
           response = await axios.get(
-            "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts?untagged=true"
+            "https://yasamannetserver.onrender.com/posts?untagged=true"
           );
         } else {
           response = await axios.get(
-            `https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts?tag=${tag}`
+            `https://yasamannetserver.onrender.com/posts?tag=${tag}`
           );
         }
         setPosts(response.data);

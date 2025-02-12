@@ -14,7 +14,7 @@ const Home = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts"
+          "https://yasamannetserver.onrender.com/posts"
         );
         const sortedPosts = response.data.sort(
           (a, b) => new Date(b.date) - new Date(a.date)

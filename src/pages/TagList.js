@@ -11,7 +11,7 @@ const TagList = () => {
     const fetchTags = async () => {
       try {
         const response = await axios.get(
-          "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/tags"
+          "https://yasamannetserver.onrender.com/tags"
         );
         setTags(response.data);
       } catch (error) {

@@ -27,7 +27,7 @@ const PostList = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts"
+          "https://yasamannetserver.onrender.com/posts"
         );
         setPosts(response.data);
       } catch (error) {
@@ -48,7 +48,7 @@ const PostList = () => {
 
     try {
       await axios.delete(
-        `https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts/${id}`,
+        `https://yasamannetserver.onrender.com/posts/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

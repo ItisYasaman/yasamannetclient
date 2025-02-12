@@ -17,7 +17,7 @@ const Navigation = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          "https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/posts"
+          "https://yasamannetserver.onrender.com/posts"
         );
         setAllPosts(response.data);
       } catch (error) {

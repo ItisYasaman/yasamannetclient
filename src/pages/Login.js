@@ -23,7 +23,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://yasamannetserver-0b9ae46e8ccd.herokuapp.com/auth/login', {
+      const response = await axios.post('https://yasamannetserver.onrender.com/auth/login', {
         username,
         password
       });
