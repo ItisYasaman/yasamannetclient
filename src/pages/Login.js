@@ -23,7 +23,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://yasamannetserver.onrender.com/auth/login', {
+      const response = await axios.post('https://yasamannetserver-production.up.railway.app/auth/login', {
         username,
         password
       });

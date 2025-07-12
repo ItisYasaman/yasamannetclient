@@ -27,7 +27,7 @@ const PostList = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          "https://yasamannetserver.onrender.com/posts"
+          "https://yasamannetserver-production.up.railway.app/posts"
         );
         setPosts(response.data);
       } catch (error) {
@@ -48,7 +48,7 @@ const PostList = () => {
 
     try {
       await axios.delete(
-        `https://yasamannetserver.onrender.com/posts/${id}`,
+        `https://yasamannetserver-production.up.railway.app/posts/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

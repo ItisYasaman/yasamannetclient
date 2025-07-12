@@ -17,7 +17,7 @@ const Navigation = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get(
-          "https://yasamannetserver.onrender.com/posts"
+          "https://yasamannetserver-production.up.railway.app/posts"
         );
         setAllPosts(response.data);
       } catch (error) {

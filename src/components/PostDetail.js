@@ -22,7 +22,7 @@ const PostDetail = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `https://yasamannetserver.onrender.com/posts/${id}`
+          `https://yasamannetserver-production.up.railway.app/posts/${id}`
         );
         setPost(response.data);
         detectLanguageDirection(response.data.content);

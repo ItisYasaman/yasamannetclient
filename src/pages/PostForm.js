@@ -52,7 +52,7 @@ const PostForm = () => {
         const token = localStorage.getItem("token");
         try {
           const response = await axios.get(
-            `https://yasamannetserver.onrender.com/posts/${id}`,
+            `https://yasamannetserver-production.up.railway.app/posts/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -90,8 +90,8 @@ const PostForm = () => {
 
     try {
       const url = id
-        ? `https://yasamannetserver.onrender.com/posts/${id}`
-        : "https://yasamannetserver.onrender.com/posts";
+        ? `https://yasamannetserver-production.up.railway.app/posts/${id}`
+        : "https://yasamannetserver-production.up.railway.app/posts";
       const method = id ? "put" : "post";
       const response = await axios({
         method,
